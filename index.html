@@ -13,22 +13,35 @@
   </head>
   <body>
     <div class="container">
-      <input type="file" name="inputfile" id="inputfile" />
-      <div class="col-5">
-        
-        <table class="table table-info">
-          <thead>
-            <tr>
+      <input type="file" name="inputfile" id="inputfile" class="pt-3" />
+      <div class="row pt-3">
+        <div class="col-6">
+          <table class="table table-info caption-top">            
+              <caption>Variables Memory</caption>
+            <thead>
+              <tr>
                 <th scope="col">#</th>
-              <th scope="col">Commands</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
-      </div>
-      
+                <th scope="col">Variable</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody id="tbody_variables"></tbody>
+          </table>
+        </div>
+        <div class="col-6">
+          <table class="table table-info caption-top">            
+            <caption>Instruction Memory</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Commands</th>
+              </tr>
+            </thead>
+            <tbody id="tbody_commands"></tbody>
+          </table>
+        </div>
+      </div>      
     </div>
-
     <script src="scripts/scripts.js"></script>
   </body>
 </html>

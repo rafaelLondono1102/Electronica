@@ -6,7 +6,7 @@ commands.addEventListener("change", function () {
   var fr = new FileReader();
   fr.onload = function () {
     commandArray = fr.result.split("\n");
-    let tbody = document.getElementById("tbody");
+    let tbody = document.getElementById("tbody_commands");
     for (let i = 0; i < commandArray.length; i++) {
       if (i < commandArray.length - 1) {
         commandArray[i] = commandArray[i].slice(0, commandArray[i].length - 1);
