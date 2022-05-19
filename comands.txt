@@ -1,2 +1,2 @@
 mov eax,variableB
-addes eax,variableA
+add eax,variableA

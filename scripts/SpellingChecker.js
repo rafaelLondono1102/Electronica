@@ -22,7 +22,7 @@ class SpellChecker {
             ", verifique la escritura"
         );
         right = false;
-      } else if ((parameters.length < 1) | (parameters.length > 2)) {
+      } else if ((parameters.length <= 1) | (parameters.length > 2)) {
         alert("Error en los Parametros, verifique la sintaxis");
         right = false;
       }
