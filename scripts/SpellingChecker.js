@@ -25,6 +25,11 @@ class SpellChecker {
       } else if ((parameters.length <= 1) | (parameters.length > 2)) {
         alert("Error en los Parametros, verifique la sintaxis");
         right = false;
+      } else if ((command == "mul") | (command == "div")) {
+        if (parameters.length != 1) {
+          alert("Error en los Parametros, verifique la sintaxis");
+          right = false;
+        }
       }
     });
     return right;
