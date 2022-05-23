@@ -1,4 +1,6 @@
 class SpellChecker {
+  contador = 1;
+
   dictCommands = {
     mov: "mov",
     add: "add",
@@ -7,6 +9,11 @@ class SpellChecker {
     div: "div",
     and: "and",
     xor: "xor",
+  };
+
+  dictEspacioMemoria = {
+    eax: "eax",
+    edx: "edx",
   };
 
   spellCheck(commands) {
@@ -25,6 +32,12 @@ class SpellChecker {
       } else if ((parameters.length <= 1) | (parameters.length > 2)) {
         alert("Error en los Parametros, verifique la sintaxis");
         right = false;
+      } else if (!this.dictEspacioMemoria.hasOwnProperty(parameters[0])) {
+        this.crearVariables(parameters[0]);
+        console.log("1")
+      } else if (!this.dictEspacioMemoria.hasOwnProperty(parameters[1])) {
+        this.crearVariables(parameters[1]);
+        console.log("2")
       } else if ((command == "mul") | (command == "div")) {
         if (parameters.length != 1) {
           alert("Error en los Parametros, verifique la sintaxis");
@@ -33,5 +46,25 @@ class SpellChecker {
       }
     });
     return right;
+  }
+
+  crearVariables(variable) {
+    let tablaVariable = document.getElementById("tbody_variables");
+    //Imprimir la variable
+    let text = document.createTextNode(variable);
+    let tr = document.createElement("tr");
+    tr.setAttribute("id", this.contador);
+    let td = document.createElement("td");
+    td.appendChild(text);
+
+    let tdv = document.createElement("td");
+    let tdValue = document.createTextNode("0");
+    tdv.appendChild(tdValue);
+
+    //se adiciona
+    tr.appendChild(td);
+    tr.appendChild(tdv);
+    tablaVariable.appendChild(tr);
+    contador++;
   }
 }
