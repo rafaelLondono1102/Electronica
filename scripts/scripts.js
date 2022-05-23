@@ -1,6 +1,7 @@
 //Lectura del archivo
 let commands = document.getElementById("inputfile");
 var commandArray = [];
+let contador = 0;
 
 commands.addEventListener("change", function () {
   var fr = new FileReader();
@@ -17,8 +18,8 @@ commands.addEventListener("change", function () {
     let spell = new SpellChecker();
     if (spell.spellCheck(commandArray)) {
       llenarTabla(commandArray);
-    }else{
-      document.location.reload(true)
+    } else {
+      document.location.reload(true);
     }
   };
   console.log(fr.readAsText(this.files[0]));
@@ -40,3 +41,42 @@ function llenarTabla(commandArray) {
     tbody.appendChild(tr);
   }
 }
+
+//Funcion Principal donde se hace la logica de los comandos
+var botonMain = document.getElementById("btn-main");
+function main() {
+  if (contador >= commandArray.length) {
+    alert("No hay mas comandos que leer");
+    botonMain.disabled = true;
+  } else {
+    console.log(commandArray[contador]);
+    contador++;
+  }
+}
+
+function ejecutarComando(comando) {
+  switch (comando) {
+    case "mov":
+      //TODO : llamar funcion move del obeto
+      break;
+    case "add":
+      //TODO : llamar funcion add del obeto
+      break;
+    case "sub":
+      //TODO : llamar funcion sub del obeto
+      break;
+    case "mul":
+      //TODO : llamar funcion muul del obeto
+      break;
+    case "div":
+      //TODO : llamar funcion div del obeto
+      break;
+
+    default:
+      break;
+  }
+}
+
+botonMain.addEventListener("click", () => {
+  main();
+});
