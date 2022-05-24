@@ -1,3 +1,3 @@
-mov variableA,5
-mov variableB,4
-mov edx,variableB
+mov variableA,9
+mov variableB,10
+add variableA,variableB

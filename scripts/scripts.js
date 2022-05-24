@@ -76,7 +76,9 @@ function ejecutarComando(commandArray) {
       funcion.mov()
       break;
     case "add":
-      //TODO : llamar funcion add del obeto
+      funcion.setParametro1(parametros[0])
+      funcion.setParametro2(parametros[1])
+      funcion.add()
       break;
     case "sub":
       //TODO : llamar funcion sub del obeto
