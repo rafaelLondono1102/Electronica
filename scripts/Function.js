@@ -146,7 +146,7 @@ class Function {
       (this.parametro2 == "eax")
     ) {
       let idVal = this.getId("parametro1");
-      let val = (document.getElementById("EAX-value").innerHTML = val);
+      let val = document.getElementById("EAX-value").innerHTML;
       document.getElementById(idVal).innerHTML = val;
       this.cadenaBinaria +=
         " " +
@@ -234,11 +234,11 @@ class Function {
       (this.parametro1 == "edx") &
       this.parametro2.includes("variable")
     ) {
-      let valEax = Number(document.getElementById("EDX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let val = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
       );
-      let sum = valEax + val;
+      let sum = valEdx + val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
         " " +
@@ -252,11 +252,11 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "edx")
     ) {
-      let valEax = Number(document.getElementById("EDX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
       );
-      let sum = valEax + val;
+      let sum = valEdx + val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
         " " +
@@ -284,13 +284,16 @@ class Function {
         " " +
         this.dictBinary["eax"] +
         " ";
-    } else {
+    } else if(this.parametro1.includes("variable") & this.parametro2.includes("variable")){
+      
       let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
       );
       let val2 = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
       );
+      console.log(val1)
+      console.log(val2)
       let sum = val1 + val2;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -301,6 +304,21 @@ class Function {
         " " +
         this.getBinario("parametro2") +
         " ";
+    }else if(this.parametro1.includes("variable") & (this.parametro2 != "eax" | this.parametro2 != "edx" | !this.parametro2.includes("variable"))) {
+      console.log("holiwi")
+      let val1 = Number(
+        document.getElementById(this.getId("parametro1")).innerHTML
+      );
+      let sum = val1 + Number(this.parametro2);
+      document.getElementById("EAX-value").innerHTML = sum;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["add"] +
+        " " +
+        this.getBinario("parametro1") +
+        " " +
+        Number(this.parametro2).toString(2) +
+        " ";
     }
   }
 
@@ -308,8 +326,8 @@ class Function {
     if ((this.parametro1 == "eax") & (this.parametro2 == "edx")) {
       let valEax = Number(document.getElementById("EAX-value").innerHTML);
       let valEdx = Number(document.getElementById("EDX-value").innerHTML);
-      let sum = valEax + valEdx;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = valEax - valEdx;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -321,8 +339,8 @@ class Function {
     } else if ((this.parametro1 == "edx") & (this.parametro2 == "eax")) {
       let valEax = Number(document.getElementById("EAX-value").innerHTML);
       let valEdx = Number(document.getElementById("EDX-value").innerHTML);
-      let sum = valEax + valEdx;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = valEdx - valEax;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -339,8 +357,8 @@ class Function {
       let val = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
       );
-      let sum = valEax + val;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = valEax - val;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -353,12 +371,12 @@ class Function {
       (this.parametro1 == "edx") &
       this.parametro2.includes("variable")
     ) {
-      let valEax = Number(document.getElementById("EDX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let val = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
       );
-      let sum = valEax + val;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = valEdx - val;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -371,12 +389,12 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "edx")
     ) {
-      let valEax = Number(document.getElementById("EDX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
       );
-      let sum = valEax + val;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = val - valEdx;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -393,8 +411,8 @@ class Function {
       let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
       );
-      let sum = valEax + val;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = val -valEax;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -403,15 +421,15 @@ class Function {
         " " +
         this.dictBinary["eax"] +
         " ";
-    } else {
+    } else if(this.parametro1.includes("variable") & this.parametro2.includes("variable")){
       let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
       );
       let val2 = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
       );
-      let sum = val1 + val2;
-      document.getElementById("EAX-value").innerHTML = sum;
+      let diff = val1 - val2;
+      document.getElementById("EAX-value").innerHTML = diff;
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -419,6 +437,21 @@ class Function {
         this.getBinario("parametro1") +
         " " +
         this.getBinario("parametro2") +
+        " ";
+    }else if(this.parametro1.includes("variable") & (this.parametro2 != "eax" | this.parametro2 != "edx" | !this.parametro2.includes("variable"))) {
+      console.log("holiwi")
+      let val1 = Number(
+        document.getElementById(this.getId("parametro1")).innerHTML
+      );
+      let sum = val1 - Number(this.parametro2);
+      document.getElementById("EAX-value").innerHTML = sum;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["add"] +
+        " " +
+        this.getBinario("parametro1") +
+        " " +
+        Number(this.parametro2).toString(2) +
         " ";
     }
   }
