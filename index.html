@@ -12,12 +12,26 @@
     <title>Document</title>
   </head>
   <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-md">
+        <span class="navbar-brand mb-0 h1">Memorias del Procesador</span>
+      </div>
+    </nav>
     <div class="container">
-      <input type="file" name="inputfile" id="inputfile" class="pt-3" />
+      <div class="row">
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="formFile" class="form-label pt-3">Ingrese archivo con comandos para ejecutar</label>
+            <input class="form-control " type="file" id="inputfile" name="inputfile" >
+          </div>
+        </div>        
+      </div>            
       <div class="row pt-3">
         <div class="col-6">
-          <table class="table table-info caption-top" id="valores">            
-              <caption>Variables Memory</caption>
+          <table class="table table-info caption-top" id="valores">
+            <caption>
+              Variables Memory
+            </caption>
             <thead>
               <tr>
                 <th scope="col">Variable</th>
@@ -36,8 +50,10 @@
           </table>
         </div>
         <div class="col-6">
-          <table class="table table-info caption-top">            
-            <caption>Instruction Memory</caption>
+          <table class="table table-info caption-top">
+            <caption>
+              Instruction Memory
+            </caption>
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -47,8 +63,8 @@
             <tbody id="tbody_commands"></tbody>
           </table>
         </div>
-      </div>   
-      <button id="btn-main">Leer Comandos</button>   
+      </div>
+      <button id="btn-main" class="btn btn-outline-primary" type="button">Leer Comandos</button>
     </div>
     <script src="scripts/Function.js"></script>
     <script src="scripts/scripts.js"></script>
