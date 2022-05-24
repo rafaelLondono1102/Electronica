@@ -40,7 +40,6 @@ class Function {
 
   getId() {
     for (let i = 0; i < this.arrayVariables.length; i++) {
-      console.log(this.arrayVariables[i].id);
       if (
         (this.parametro1 == this.arrayVariables[i].nombre) |
         (this.parametro2 == this.arrayVariables[i].nombre)
@@ -52,7 +51,6 @@ class Function {
 
   getBinario() {
     for (let i = 0; i < this.arrayVariables.length; i++) {
-      console.log(this.arrayVariables[i].id);
       if (
         (this.parametro1 == this.arrayVariables[i].nombre) |
         (this.parametro2 == this.arrayVariables[i].nombre)
@@ -63,12 +61,109 @@ class Function {
   }
 
   //--------------- Funciones Principales ---------------------
-  mov() {}
+  //Funciones con 2 parametros
+  mov() {
+    if ((this.parametro1 == "eax") & (this.parametro2 == "edx")) {
+      let edxValue = document.getElementById("EDX-value").innerHTML;
+      document.getElementById("EAX-value").innerHTML = edxValue;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.dictBinary["eax"] +
+        " " +
+        this.dictBinary["edx"] +
+        " ";
+    } else if ((this.parametro1 == "edx") & (this.parametro2 == "eax")) {
+      let eaxValue = document.getElementById("EAX-value").innerHTML;
+      document.getElementById("EDX-value").innerHTML = eaxValue;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.dictBinary["edx"] +
+        " " +
+        this.dictBinary["eax"] +
+        " ";
+    } else if (
+      (this.parametro1 == "edx") &
+      this.parametro2.includes("variable")
+    ) {
+      let idVal = this.getId();
+      let val = document.getElementById(idVal).innerHTML;
+      document.getElementById("EDX-value").innerHTML = val;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.dictBinary["edx"] +
+        " " +
+        this.getBinario() +
+        " ";
+    } else if (
+      (this.parametro1 == "eax") &
+      this.parametro2.includes("variable")
+    ) {
+      let idVal = this.getId();
+      let val = document.getElementById(idVal).innerHTML;
+      document.getElementById("EAX-value").innerHTML = val;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.dictBinary["eax"] +
+        " " +
+        this.getBinario() +
+        " ";
+    } else if (
+      this.parametro1.includes("variable") &
+      (this.parametro2 == "eax")
+    ) {
+      let idVal = this.getId();
+      let val = (document.getElementById("EAX-value").innerHTML = val);
+      document.getElementById(idVal).innerHTML = val;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.getBinario() +
+        " " +
+        this.dictBinary["eax"] +
+        " ";
+    } else if (
+      this.parametro1.includes("variable") &
+      (this.parametro2 == "edx")
+    ) {
+      let idVal = this.getId();
+      let val = (document.getElementById("EDX-value").innerHTML = val);
+      document.getElementById(idVal).innerHTML = val;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.getBinario() +
+        " " +
+        this.dictBinary["edx"] +
+        " ";
+    } else {
+      let idVal = this.getId();
+      document.getElementById(idVal).innerHTML = this.parametro2;
+      this.cadenaBinaria +=
+        " " +
+        this.dictBinary["mov"] +
+        " " +
+        this.getBinario() +
+        " " +
+        Number(this.parametro2).toString(2) +
+        " ";
+    }
+  }
 
   add() {}
 
   sub() {}
 
+  //Funciones con solo 1 parametro
   mul() {
     console.log(this.arrayVariables);
     let eaxVal = Number(document.getElementById("EAX-value").innerHTML);
