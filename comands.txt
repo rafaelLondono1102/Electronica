@@ -1,3 +1,4 @@
 mov variableA,9
 mov variableB,10
+and variableA, variableB
 not variableA
