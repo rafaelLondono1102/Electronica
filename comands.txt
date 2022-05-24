@@ -1,7 +1,3 @@
 mov variableA,9
 mov variableB,10
-add variableA,2
-add variableA,variableB
-mov variableA,eax
-sub variableB,variableA
-sub variableB,8
+not variableA

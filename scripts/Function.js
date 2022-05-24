@@ -456,6 +456,18 @@ class Function {
     }
   }
 
+  and(){
+
+  }
+
+  xor(){
+
+  }
+
+  or(){
+
+  }
+
   //Funciones con solo 1 parametro
   mul() {
     console.log(this.arrayVariables);
@@ -481,5 +493,30 @@ class Function {
     alert("comando div");
     this.cadenaBinaria +=
       " " + this.dictBinary["div"] + " " + this.getBinario("parametro1");
+  }
+
+  not(){    
+    let idVal = this.getId("parametro1");    
+    let variableVal = Number(document.getElementById(idVal).innerHTML).toString(2).padStart(8, 0) + "";     
+    let not = this.FunNot(variableVal);       
+    not = parseInt(not, 2);
+    console.log("2",not)
+    document.getElementById("EAX-value").innerHTML = not;
+    alert("comando not");
+    this.cadenaBinaria +=
+      " " + this.dictBinary["not"] + " " + this.getBinario("parametro1");
+  }
+
+  FunNot(binario){
+    let binario1 = binario.slice().split('');    
+    for (let i = 0; i < binario1.length; i++) {
+      if (binario1[i] == '0') {
+        binario1[i] = '1'
+      } else {
+        binario1[i] = '0'
+      }      
+    }    
+    return binario1.join("")
+
   }
 }
