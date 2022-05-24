@@ -24,7 +24,7 @@ class Function {
 
   sub(parametro1, parametro2) {}
 
-  mul(parametro1, parametro2) {}
+  mul(parametro1) {}
 
-  div(parametro1, parametro2) {}
+  div(parametro1) {}
 }

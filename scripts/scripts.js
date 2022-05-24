@@ -2,6 +2,7 @@
 let commands = document.getElementById("inputfile");
 var commandArray = [];
 let contador = 0;
+let contadorComandos = 0;
 
 commands.addEventListener("change", function () {
   var fr = new FileReader();
@@ -32,13 +33,17 @@ function llenarTabla(commandArray) {
     th.setAttribute("scope", "row");
     row = document.createTextNode(i + 1);
     th.appendChild(row);
+    td = document.createElement("td")
     //Imprimir el comando en la fila
     text = document.createTextNode(commandArray[i]);
+    td.appendChild(text)
     tr = document.createElement("tr");
+    tr.setAttribute("id","comando"+contadorComandos)
     tr.appendChild(th);
-    tr.appendChild(text);
+    tr.appendChild(td);
     //se adiciona
     tbody.appendChild(tr);
+    contadorComandos++
   }
 }
 
@@ -49,12 +54,16 @@ function main() {
     alert("No hay mas comandos que leer");
     botonMain.disabled = true;
   } else {
-    console.log(commandArray[contador]);
+    commandArray[contador]
+    document.getElementById("comando"+contador).setAttribute("class","table-danger")
     contador++;
   }
 }
 
-function ejecutarComando(comando) {
+function ejecutarComando(commandArray) {
+  let split = commandArray.split(" ");
+  let comando = split[0];
+  let Parametros = split[1].split(",");
   switch (comando) {
     case "mov":
       //TODO : llamar funcion move del obeto

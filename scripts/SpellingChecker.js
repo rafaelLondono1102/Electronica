@@ -53,18 +53,18 @@ class SpellChecker {
     //Imprimir la variable
     let text = document.createTextNode(variable);
     let tr = document.createElement("tr");
-    tr.setAttribute("id", this.contador);
     let td = document.createElement("td");
     td.appendChild(text);
 
     let tdv = document.createElement("td");
     let tdValue = document.createTextNode("0");
+    tdv.setAttribute("id", this.contador);
     tdv.appendChild(tdValue);
 
     //se adiciona
     tr.appendChild(td);
     tr.appendChild(tdv);
     tablaVariable.appendChild(tr);
-    contador++;
+    this.contador++;
   }
 }
