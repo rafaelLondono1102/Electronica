@@ -1,2 +1,2 @@
-mov eax,variableB
-add eax,variableA
+mul variableA
+mov eax,varibleB

@@ -3,12 +3,16 @@ class Function {
     this.parametro1 = parametro1;
     this.parametro2 = parametro2;
   }
+  arrayVariables = [];
   //SETTERS
   setParametro1(parametro1) {
     this.parametro1 = parametro1;
   }
-  setParametro1(parametro2) {
+  setParametro2(parametro2) {
     this.parametro2 = parametro2;
+  }
+  setArrayVariables(arrayVariables) {
+    this.arrayVariables = arrayVariables;
   }
   //GETTERS
   getParametro1() {
@@ -17,14 +21,37 @@ class Function {
   getParametro2() {
     return this.parametro2;
   }
+
+  getId() {
+    for (let i = 0; i < this.arrayVariables.length; i++) {
+      console.log(this.arrayVariables[i].id)
+      if (
+        (this.parametro1 == this.arrayVariables[i].nombre) |
+        (this.parametro2 == this.arrayVariables[i].nombre)
+      ) {
+        return String(this.arrayVariables[i].id);
+      }
+    }
+  }
+
   //--------------- Funciones Principales ---------------------
-  mov(parametro1, parametro2) {}
+  mov() {}
 
-  add(parametro1, parametro2) {}
+  add() {}
 
-  sub(parametro1, parametro2) {}
+  sub() {}
 
-  mul(parametro1) {}
+  mul() {
+    console.log(this.arrayVariables)
+    let eaxVal = Number(document.getElementById("EAX-value").innerHTML);
+    let idVal = this.getId()
+    console.log(idVal)
+    let variableVal = Number(document.getElementById(idVal).innerHTML)
 
-  div(parametro1) {}
+    let mult = eaxVal * variableVal
+    document.getElementById("EDX-value").innerHTML = mult
+    alert("comando mul")
+  }
+
+  div() {}
 }

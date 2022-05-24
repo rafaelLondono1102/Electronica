@@ -3,12 +3,14 @@ let commands = document.getElementById("inputfile");
 var commandArray = [];
 let contador = 0;
 let contadorComandos = 0;
+let funcion = new Function("","")
+let variables = []
+
 
 commands.addEventListener("change", function () {
   var fr = new FileReader();
   fr.onload = function () {
     commandArray = fr.result.split("\n");
-    let tbody = document.getElementById("tbody_commands");
     for (let i = 0; i < commandArray.length; i++) {
       if (i < commandArray.length - 1) {
         commandArray[i] = commandArray[i].slice(0, commandArray[i].length - 1);
@@ -16,12 +18,14 @@ commands.addEventListener("change", function () {
       //generar la tabla a mano, demas que hay mejores maneras pero la verdad no se :)
       //Imprimir el numero de la fila donde se va a ver el comando
     }
-    let spell = new SpellChecker();
+    let spell = new  SpellChecker();
     if (spell.spellCheck(commandArray)) {
       llenarTabla(commandArray);
     } else {
       document.location.reload(true);
     }
+    variables = spell.getVariables()
+    console.log(variables)
   };
   console.log(fr.readAsText(this.files[0]));
 });
@@ -54,19 +58,22 @@ function main() {
     alert("No hay mas comandos que leer");
     botonMain.disabled = true;
   } else {
-    commandArray[contador]
     document.getElementById("comando"+contador).setAttribute("class","table-danger")
+    ejecutarComando(commandArray[contador])
     contador++;
   }
 }
 
 function ejecutarComando(commandArray) {
+  funcion.setArrayVariables(variables)
   let split = commandArray.split(" ");
   let comando = split[0];
-  let Parametros = split[1].split(",");
+  let parametros = split[1].split(",");
   switch (comando) {
     case "mov":
-      //TODO : llamar funcion move del obeto
+      funcion.setParametro1(parametros[0])
+      funcion.setParametro2(parametros[1])
+      funcion.mov()
       break;
     case "add":
       //TODO : llamar funcion add del obeto
@@ -75,7 +82,9 @@ function ejecutarComando(commandArray) {
       //TODO : llamar funcion sub del obeto
       break;
     case "mul":
-      //TODO : llamar funcion muul del obeto
+      funcion.setParametro1(parametros[0])
+      funcion.setParametro2(parametros[1])
+      funcion.mul()
       break;
     case "div":
       //TODO : llamar funcion div del obeto

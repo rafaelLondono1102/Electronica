@@ -16,12 +16,20 @@ class SpellChecker {
     edx: "edx",
   };
 
+  arregloVariables = [];
+
   spellCheck(commands) {
     let right = true;
     commands.forEach((Element) => {
       let split = Element.split(" ");
       let command = split[0];
       let parameters = split[1].split(",");
+      if ((command == "mul") | (command == "div")) {
+        if (parameters.length < 1)  {
+          alert("Error en los Parametros, verifique la sintaxis de la multi o divi");
+          right = false;
+        }
+      }
       if (!this.dictCommands.hasOwnProperty(command)) {
         alert(
           "Error de escritura en el comando " +
@@ -29,20 +37,15 @@ class SpellChecker {
             ", verifique la escritura"
         );
         right = false;
-      } else if ((parameters.length <= 1) | (parameters.length > 2)) {
+      } else if ((parameters.length < 1) | (parameters.length > 2)) {
         alert("Error en los Parametros, verifique la sintaxis");
         right = false;
       } else if (!this.dictEspacioMemoria.hasOwnProperty(parameters[0])) {
         this.crearVariables(parameters[0]);
-        console.log("1")
+        console.log("1");
       } else if (!this.dictEspacioMemoria.hasOwnProperty(parameters[1])) {
         this.crearVariables(parameters[1]);
-        console.log("2")
-      } else if ((command == "mul") | (command == "div")) {
-        if (parameters.length != 1) {
-          alert("Error en los Parametros, verifique la sintaxis");
-          right = false;
-        }
+        console.log("2");
       }
     });
     return right;
@@ -65,6 +68,17 @@ class SpellChecker {
     tr.appendChild(td);
     tr.appendChild(tdv);
     tablaVariable.appendChild(tr);
+
+    let variables = {
+      nombre: variable,
+      id: this.contador,
+    };
+    this.arregloVariables.push(variables);
+
     this.contador++;
+  }
+
+  getVariables() {
+    return this.arregloVariables;
   }
 }
