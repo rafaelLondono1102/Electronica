@@ -478,7 +478,6 @@ class Function {
 
     let div = eaxVal / variableVal;
     document.getElementById("EDX-value").innerHTML = div;
-    alert("comando div");
     this.cadenaBinaria +=
       " " + this.dictBinary["div"] + " " + this.getBinario("parametro1");
   }

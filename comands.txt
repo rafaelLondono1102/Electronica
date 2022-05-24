@@ -5,3 +5,5 @@ add variableA,variableB
 mov variableA,eax
 sub variableB,variableA
 sub variableB,8
+mul variableA
+div variableB
