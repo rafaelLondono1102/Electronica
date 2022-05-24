@@ -89,12 +89,19 @@ class SpellChecker {
       let variables = {
         nombre: variable,
         id: this.contador,
-        binario: this.contadorBinario.toString(2),
+        binario: this.byteString(this.contadorBinario),
       };
       this.arregloVariables.push(variables);
       this.contadorBinario++;
       this.contador++;
     }
+  }
+
+  byteString(n) {
+    if (n < 0 || n > 255 || n % 1 !== 0) {
+        throw new Error(n + " does not fit in a byte");
+    }
+    return ("000000000" + n.toString(2)).substr(-8)
   }
 
   getVariables() {

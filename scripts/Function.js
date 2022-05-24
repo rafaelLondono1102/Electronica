@@ -318,13 +318,14 @@ class Function {
       );
       let sum = val1 + Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
+      let number = this.byteString(Number(this.parametro2))
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
         " " +
         this.getBinario("parametro1") +
         " " +
-        Number(this.parametro2).toString(2) +
+        number +
         " ";
     }
   }
@@ -460,13 +461,14 @@ class Function {
       );
       let sum = val1 - Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
+      let number = this.byteString(Number(this.parametro2))
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
         " " +
         this.getBinario("parametro1") +
         " " +
-        Number(this.parametro2).toString(2) +
+        number +
         " ";
     }
   }
@@ -955,7 +957,6 @@ class Function {
 
     let div = eaxVal / variableVal;
     document.getElementById("EDX-value").innerHTML = div;
-    alert("comando div");
     this.cadenaBinaria +=
       " " + this.dictBinary["div"] + " " + this.getBinario("parametro1");
   }
@@ -988,5 +989,12 @@ class Function {
 
   to8BitBinary(number) {
     return number.toString(2).padStart(8, 0) + "";
+  }
+  
+  byteString(n) {
+    if (n < 0 || n > 255 || n % 1 !== 0) {
+        throw new Error(n + " does not fit in a byte");
+    }
+    return ("000000000" + n.toString(2)).substr(-8)
   }
 }
