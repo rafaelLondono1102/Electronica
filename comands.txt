@@ -1,2 +1,2 @@
 mul variableA
-mov eax,varibleB
+mov eax,variableB

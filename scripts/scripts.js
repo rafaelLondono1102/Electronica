@@ -87,7 +87,9 @@ function ejecutarComando(commandArray) {
       funcion.mul()
       break;
     case "div":
-      //TODO : llamar funcion div del obeto
+      funcion.setParametro1(parametros[0])
+      funcion.setParametro2(parametros[1])
+      funcion.div()
       break;
 
     default:

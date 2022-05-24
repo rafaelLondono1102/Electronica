@@ -1,6 +1,6 @@
 class SpellChecker {
   contador = 1;
-
+  contadorBinario = 8
   dictCommands = {
     mov: "mov",
     add: "add",
@@ -8,7 +8,9 @@ class SpellChecker {
     mul: "mul",
     div: "div",
     and: "and",
+    or: "or",
     xor: "xor",
+    not: "not"
   };
 
   dictEspacioMemoria = {
@@ -72,9 +74,10 @@ class SpellChecker {
     let variables = {
       nombre: variable,
       id: this.contador,
+      binario : this.contadorBinario.toString(2)
     };
     this.arregloVariables.push(variables);
-
+    this.contadorBinario++
     this.contador++;
   }
 
