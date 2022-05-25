@@ -1,0 +1,12 @@
+mov variableA,1
+mov variableB,0
+mov variableC,0
+mov variableD,1
+sub variableA,variableB
+mov variableResta,eax
+add variableA,variableC
+mov variableSuma,eax
+or variableResta,variableSuma
+mov variableOr,eax
+and variableOr,variableD
+mov variableP,eax
