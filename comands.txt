@@ -1,6 +1,6 @@
 mov variableA,9
 mov variableB,10
-and variableA, variableB
+and variableA,variableB
 not variableA
 add variableA,2
 add variableA,variableB

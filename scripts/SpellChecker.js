@@ -26,6 +26,7 @@ class SpellChecker {
       let split = Element.split(" ");
       let command = split[0];
       let parameters = split[1].split(",");
+      console.log(parameters)
       if ((command == "mul") | (command == "div")) {
         if (parameters.length < 1) {
           alert(
