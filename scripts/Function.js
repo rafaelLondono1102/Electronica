@@ -318,7 +318,7 @@ class Function {
       );
       let sum = val1 + Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
-      let number = this.byteString(Number(this.parametro2))
+      let number = this.byteString(Number(this.parametro2));
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -461,7 +461,7 @@ class Function {
       );
       let sum = val1 - Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
-      let number = this.byteString(Number(this.parametro2))
+      let number = this.byteString(Number(this.parametro2));
       this.cadenaBinaria +=
         " " +
         this.dictBinary["add"] +
@@ -475,12 +475,8 @@ class Function {
 
   and() {
     if ((this.parametro1 == "eax") & (this.parametro2 == "edx")) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let valEdx = this.to8BitBinary(
-        Number(document.getElementById("EDX-value").innerHTML)
-      );
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let sum = valEax & valEdx;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -492,12 +488,8 @@ class Function {
         this.dictBinary["edx"] +
         " ";
     } else if ((this.parametro1 == "edx") & (this.parametro2 == "eax")) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let valEdx = this.to8BitBinary(
-        Number(document.getElementById("EDX-value").innerHTML)
-      );
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let sum = valEax & valEdx;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -512,11 +504,9 @@ class Function {
       (this.parametro1 == "eax") &
       this.parametro2.includes("variable")
     ) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let val = this.to8BitBinary(
-        Number(document.getElementById(this.getId("parametro2")).innerHTML)
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let val = Number(
+        document.getElementById(this.getId("parametro2")).innerHTML
       );
       let sum = valEax & val;
       document.getElementById("EAX-value").innerHTML = sum;
@@ -532,10 +522,10 @@ class Function {
       (this.parametro1 == "edx") &
       this.parametro2.includes("variable")
     ) {
-      let valEdx = this.to8BitBinary(Number(document.getElementById("EDX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
-      ));
+      );
       let sum = valEdx & val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -550,10 +540,10 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "edx")
     ) {
-      let valEdx = this.to8BitBinary(Number(document.getElementById("EDX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
+      );
       let sum = valEdx & val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -568,10 +558,10 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "eax")
     ) {
-      let valEax = this.to8BitBinary(Number(document.getElementById("EAX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
+      );
       let sum = valEax & val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -586,12 +576,12 @@ class Function {
       this.parametro1.includes("variable") &
       this.parametro2.includes("variable")
     ) {
-      let val1 = this.to8BitBinary(Number(
+      let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
-      let val2 = this.to8BitBinary(Number(
+      );
+      let val2 = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
-      ));
+      );
       console.log(val1);
       console.log(val2);
       let sum = val1 & val2;
@@ -611,10 +601,10 @@ class Function {
         !this.parametro2.includes("variable"))
     ) {
       console.log("andgg");
-      let val1 = this.to8BitBinary(Number(
+      let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
-      let sum = val1 & this.to8BitBinary(Number(this.parametro2));
+      );
+      let sum = val1 & Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
         " " +
@@ -622,19 +612,15 @@ class Function {
         " " +
         this.getBinario("parametro1") +
         " " +
-        this.to8BitBinary(Number(this.parametro2)).toString(2) +
+        Number(this.parametro2).toString(2) +
         " ";
     }
   }
 
   xor() {
     if ((this.parametro1 == "eax") & (this.parametro2 == "edx")) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let valEdx = this.to8BitBinary(
-        Number(document.getElementById("EDX-value").innerHTML)
-      );
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let sum = valEax ^ valEdx;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -646,12 +632,8 @@ class Function {
         this.dictBinary["edx"] +
         " ";
     } else if ((this.parametro1 == "edx") & (this.parametro2 == "eax")) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let valEdx = this.to8BitBinary(
-        Number(document.getElementById("EDX-value").innerHTML)
-      );
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let sum = valEax ^ valEdx;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -666,11 +648,9 @@ class Function {
       (this.parametro1 == "eax") &
       this.parametro2.includes("variable")
     ) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let val = this.to8BitBinary(
-        Number(document.getElementById(this.getId("parametro2")).innerHTML)
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let val = Number(
+        document.getElementById(this.getId("parametro2")).innerHTML
       );
       let sum = valEax ^ val;
       document.getElementById("EAX-value").innerHTML = sum;
@@ -686,10 +666,10 @@ class Function {
       (this.parametro1 == "edx") &
       this.parametro2.includes("variable")
     ) {
-      let valEdx = this.to8BitBinary(Number(document.getElementById("EDX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
-      ));
+      );
       let sum = valEdx ^ val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -704,10 +684,10 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "edx")
     ) {
-      let valEdx = this.to8BitBinary(Number(document.getElementById("EDX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
+      );
       let sum = valEdx ^ val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -722,10 +702,10 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "eax")
     ) {
-      let valEax = this.to8BitBinary(Number(document.getElementById("EAX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
+      );
       let sum = valEax ^ val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -740,15 +720,16 @@ class Function {
       this.parametro1.includes("variable") &
       this.parametro2.includes("variable")
     ) {
-      let val1 = this.to8BitBinary(Number(
+      let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
-      let val2 = this.to8BitBinary(Number(
+      );
+      let val2 = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
-      ));
+      );
       console.log(val1);
       console.log(val2);
       let sum = val1 ^ val2;
+      console.log("suma", sum);
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
         " " +
@@ -765,10 +746,10 @@ class Function {
         !this.parametro2.includes("variable"))
     ) {
       console.log("andgg");
-      let val1 = this.to8BitBinary(Number(
+      let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
-      let sum = val1 ^ this.to8BitBinary(Number(this.parametro2));
+      );
+      let sum = val1 ^ Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
         " " +
@@ -783,12 +764,8 @@ class Function {
 
   or() {
     if ((this.parametro1 == "eax") & (this.parametro2 == "edx")) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let valEdx = this.to8BitBinary(
-        Number(document.getElementById("EDX-value").innerHTML)
-      );
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let sum = valEax | valEdx;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -800,12 +777,8 @@ class Function {
         this.dictBinary["edx"] +
         " ";
     } else if ((this.parametro1 == "edx") & (this.parametro2 == "eax")) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let valEdx = this.to8BitBinary(
-        Number(document.getElementById("EDX-value").innerHTML)
-      );
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
       let sum = valEax | valEdx;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -820,11 +793,9 @@ class Function {
       (this.parametro1 == "eax") &
       this.parametro2.includes("variable")
     ) {
-      let valEax = this.to8BitBinary(
-        Number(document.getElementById("EAX-value").innerHTML)
-      );
-      let val = this.to8BitBinary(
-        Number(document.getElementById(this.getId("parametro2")).innerHTML)
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let val = Number(
+        document.getElementById(this.getId("parametro2")).innerHTML
       );
       let sum = valEax | val;
       document.getElementById("EAX-value").innerHTML = sum;
@@ -840,10 +811,10 @@ class Function {
       (this.parametro1 == "edx") &
       this.parametro2.includes("variable")
     ) {
-      let valEdx = this.to8BitBinary(Number(document.getElementById("EDX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
-      ));
+      );
       let sum = valEdx | val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -858,10 +829,10 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "edx")
     ) {
-      let valEdx = this.to8BitBinary(Number(document.getElementById("EDX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEdx = Number(document.getElementById("EDX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
+      );
       let sum = valEdx | val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -876,10 +847,10 @@ class Function {
       this.parametro1.includes("variable") &
       (this.parametro2 == "eax")
     ) {
-      let valEax = this.to8BitBinary(Number(document.getElementById("EAX-value").innerHTML));
-      let val = this.to8BitBinary(Number(
+      let valEax = Number(document.getElementById("EAX-value").innerHTML);
+      let val = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
+      );
       let sum = valEax | val;
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
@@ -894,12 +865,12 @@ class Function {
       this.parametro1.includes("variable") &
       this.parametro2.includes("variable")
     ) {
-      let val1 = this.to8BitBinary(Number(
+      let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
-      let val2 = this.to8BitBinary(Number(
+      );
+      let val2 = Number(
         document.getElementById(this.getId("parametro2")).innerHTML
-      ));
+      );
       console.log(val1);
       console.log(val2);
       let sum = val1 | val2;
@@ -919,10 +890,10 @@ class Function {
         !this.parametro2.includes("variable"))
     ) {
       console.log("andgg");
-      let val1 = this.to8BitBinary(Number(
+      let val1 = Number(
         document.getElementById(this.getId("parametro1")).innerHTML
-      ));
-      let sum = val1 | this.to8BitBinary(Number(this.parametro2));
+      );
+      let sum = val1 | Number(this.parametro2);
       document.getElementById("EAX-value").innerHTML = sum;
       this.cadenaBinaria +=
         " " +
@@ -990,11 +961,11 @@ class Function {
   to8BitBinary(number) {
     return number.toString(2).padStart(8, 0) + "";
   }
-  
+
   byteString(n) {
     if (n < 0 || n > 255 || n % 1 !== 0) {
-        throw new Error(n + " does not fit in a byte");
+      throw new Error(n + " does not fit in a byte");
     }
-    return ("000000000" + n.toString(2)).substr(-8)
+    return ("000000000" + n.toString(2)).substr(-8);
   }
 }
